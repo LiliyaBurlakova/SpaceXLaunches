@@ -1,0 +1,55 @@
+﻿
+@model CSharpSpaceXApp.Models.Launch
+
+@{
+    ViewBag.Title = "Latest Launch";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<h2>Latest SpaceX launch plan</h2>
+        </br>
+        </br>
+        </br>
+
+<body>
+    <div class="custom-text">
+        <p>Flight number: @Model.FlightNumber</p>
+        <p>@Model.MissionName</p>
+        <p>@Model.MissionId</p>
+        <p>@Model.LaunchYear</p>
+        <p>@Model.LaunchDateUnix</p>
+        <p>@Model.LaunchDateUtc</p>
+        <p>@Model.LaunchDateLocal</p>
+        <hr />
+    </div>
+    <p><button class="btn btn-default" runat="server" OnClick="Button1_Click" Text="Download"></button></p>
+
+    @using (Html.BeginForm("ExportLatestLaunch", "File", FormMethod.Post))
+    {
+        <input type="hidden" name="OneLaunch" />
+        <input type="submit" id="btnSubmit" value="Export" />
+    }
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#btnSubmit").click(function () {
+                $("input[name='LatestLaunch']").val($("#Grid").html());
+            });
+        });
+    </script>
+</body>
+
+<style>
+    .custom-text {
+        font-family: Candara;
+        font-size: large;
+        text-align: justify;
+        text-justify: inter-word;
+    }
+</style>
+
+
+
+
+

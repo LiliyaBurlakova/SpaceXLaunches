@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewBag.Title = "Upcoming Launches";
+    var pagedList = (IPagedList)ViewBag.OnePageOfProducts;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+@using X.PagedList.Mvc.Core; //import this so we get our HTML Helper
+@using X.PagedList;
+
+    <link href="/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+<h2>Upcomming SpaceX launch plan</h2>
+        </br>
+        </br>
+        </br>
+
+<body>
+    <div class="spacex-image">
+        <img src="https://image.cnbcfm.com/api/v1/image/106403011-1582297335044spacexcrs17launch.jpg?v=1582297630&w=678&h=381" width="500" height="250">
+    </div>
+    @foreach (var item in ViewBag.OnePageOfProducts)
+    {
+        <div class="custom-text">
+            <p>Flight number: @item.FlightNumber</p>
+            <p>@item.MissionName</p>
+            <p>@item.MissionId</p>
+            <p>@item.LaunchYear</p>
+            <p>@item.LaunchDateUnix</p>
+            <p>@item.LaunchDateUtc</p>
+            <p>@item.LaunchDateLocal</p>
+            <hr />
+        </div>
+    }
+
+    @using (Html.BeginForm("ExportUpcoming", "File", FormMethod.Post))
+    {
+        <input type="hidden" name="Upcoming" />
+        <input type="submit" id="btnSubmit" value="Export" />
+
+    }
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#btnSubmit").click(function () {
+                $("input[name='Upcoming']").val($("#Grid").html());
+            });
+        });
+    </script>
+
+    <div id="container" style="margin-left: 20px">
+        <p></p>
+        <p></p>
+        <div class="pagination" style="margin-left: 400px">
+
+            @Html.PagedListPager(pagedList, page => Url.Action("Upcoming", new { page }))
+        </div>
+    </div>
+
+
+
+</body>
+
+<style>
+    .custom-text {
+        font-family: Candara;
+        font-size: large;
+        text-align: justify;
+        text-justify: inter-word;
+    }
+
+    .spacex-image {
+        float: right
+    }
+</style>
+
+
+
+
+
