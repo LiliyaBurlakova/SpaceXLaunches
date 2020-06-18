@@ -11488,11 +11488,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Projects\\AE\\CSharpSpaceXApp\\CSharpSpaceXApp\\CSharpSpaceXApp.csproj",
+      "projectUniqueName": "C:\\Projects\\CSharpSpaceXApp\\CSharpSpaceXApp\\CSharpSpaceXApp.csproj",
       "projectName": "CSharpSpaceXApp",
-      "projectPath": "C:\\Projects\\AE\\CSharpSpaceXApp\\CSharpSpaceXApp\\CSharpSpaceXApp.csproj",
+      "projectPath": "C:\\Projects\\CSharpSpaceXApp\\CSharpSpaceXApp\\CSharpSpaceXApp.csproj",
       "packagesPath": "C:\\Users\\Ivan\\.nuget\\packages\\",
-      "outputPath": "C:\\Projects\\AE\\CSharpSpaceXApp\\CSharpSpaceXApp\\obj\\",
+      "outputPath": "C:\\Projects\\CSharpSpaceXApp\\CSharpSpaceXApp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Ivan\\AppData\\Roaming\\NuGet\\NuGet.Config",

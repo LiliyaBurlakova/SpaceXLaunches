@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "HsSW0GCxUbNtOJjCURNU8LywlYHsHuRKH5SUAIqFNYhzQggj9BAXhthuj/V9c/0jW9Kk5WsNzynxt1oMtpVNlQ==",
+  "dgSpecHash": "/dmWuOpPoPTss7nYfQsxQYgGYygM6rYA0SAYHjDDy07eQMt605EZfFuof7azCA9O1vAKisVjxhELLDCntZ0e+g==",
   "success": true,
-  "projectFilePath": "C:\\Projects\\AE\\CSharpSpaceXApp\\CSharpSpaceXApp\\CSharpSpaceXApp.csproj",
+  "projectFilePath": "C:\\Projects\\CSharpSpaceXApp\\CSharpSpaceXApp\\CSharpSpaceXApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Ivan\\.nuget\\packages\\grpc.core\\2.29.0\\grpc.core.2.29.0.nupkg.sha512",
     "C:\\Users\\Ivan\\.nuget\\packages\\grpc.core.api\\2.29.0\\grpc.core.api.2.29.0.nupkg.sha512",
