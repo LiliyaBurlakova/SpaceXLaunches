@@ -1,12 +1,17 @@
 {
   "version": 2,
-  "dgSpecHash": "Ewf1LLnvpY3Stk1FNtI2Yiyap8jh+DYX8Wj6b3ebG4SR2AAD0asGzourQSTOW7l5nbQsmcxTjYCfeGy1Zzfixg==",
+  "dgSpecHash": "HsSW0GCxUbNtOJjCURNU8LywlYHsHuRKH5SUAIqFNYhzQggj9BAXhthuj/V9c/0jW9Kk5WsNzynxt1oMtpVNlQ==",
   "success": true,
   "projectFilePath": "C:\\Projects\\AE\\CSharpSpaceXApp\\CSharpSpaceXApp\\CSharpSpaceXApp.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Ivan\\.nuget\\packages\\grpc.core\\2.29.0\\grpc.core.2.29.0.nupkg.sha512",
+    "C:\\Users\\Ivan\\.nuget\\packages\\grpc.core.api\\2.29.0\\grpc.core.api.2.29.0.nupkg.sha512",
     "C:\\Users\\Ivan\\.nuget\\packages\\itextsharp\\5.5.13.1\\itextsharp.5.5.13.1.nupkg.sha512",
     "C:\\Users\\Ivan\\.nuget\\packages\\itextsharp.xmlworker\\5.5.13.1\\itextsharp.xmlworker.5.5.13.1.nupkg.sha512",
+    "C:\\Users\\Ivan\\.nuget\\packages\\jquery\\1.9.1\\jquery.1.9.1.nupkg.sha512",
     "C:\\Users\\Ivan\\.nuget\\packages\\jw.pager\\1.0.1\\jw.pager.1.0.1.nupkg.sha512",
+    "C:\\Users\\Ivan\\.nuget\\packages\\kendouicore\\2020.2.513\\kendouicore.2020.2.513.nupkg.sha512",
+    "C:\\Users\\Ivan\\.nuget\\packages\\kendouiweb\\2014.1.318\\kendouiweb.2014.1.318.nupkg.sha512",
     "C:\\Users\\Ivan\\.nuget\\packages\\microsoft.aspnet.mvc\\5.2.7\\microsoft.aspnet.mvc.5.2.7.nupkg.sha512",
     "C:\\Users\\Ivan\\.nuget\\packages\\microsoft.aspnet.razor\\3.2.7\\microsoft.aspnet.razor.3.2.7.nupkg.sha512",
     "C:\\Users\\Ivan\\.nuget\\packages\\microsoft.aspnet.webpages\\3.2.7\\microsoft.aspnet.webpages.3.2.7.nupkg.sha512",

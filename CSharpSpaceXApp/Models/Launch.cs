@@ -1,7 +1,8 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Reflection;
 using System.Text;
+
+
 
 namespace CSharpSpaceXApp.Models
 {
@@ -17,7 +18,6 @@ namespace CSharpSpaceXApp.Models
         public string[] MissionId { get; set; }
 
         [JsonProperty("launch_year")]
-        //[JsonConverter(typeof(ParseStringConverter))]
         public long LaunchYear { get; set; }
 
         [JsonProperty("launch_date_unix")]
@@ -99,6 +99,151 @@ namespace CSharpSpaceXApp.Models
         public string LaunchDateSource { get; set; }
 
         Launch() { }
+
+        public override string ToString()
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+
+            stringBuilder.Append(String.Format("FlightNumber: {0} \n", FlightNumber));
+
+            if (CheckPropertyValue(MissionName))
+            {
+                stringBuilder.Append(String.Format("MissionName: {0} \n", MissionName));
+            }
+            if (CheckPropertyValue(MissionId))
+            {
+                if (MissionId.Length != 0)
+                {
+                    stringBuilder.Append(String.Format("MissionId: \n"));
+                    foreach (string mission in MissionId)
+                    {
+                        stringBuilder.Append(String.Format("{0} ", mission));
+                    }
+                } else
+                {
+                    stringBuilder.Append(String.Format("MissionId: not provided\n"));
+                }
+            }
+            stringBuilder.Append(String.Format("LaunchYear: {0}\n", LaunchYear));
+            stringBuilder.Append(String.Format("LaunchDateUnix: {0}\n", LaunchDateUnix));
+            if (CheckPropertyValue(LaunchDateUtc))
+            {
+                stringBuilder.Append(String.Format("LaunchDateUtc: {0}\n", LaunchDateUtc));
+            }
+            if (CheckPropertyValue(LaunchDateLocal))
+            {
+                stringBuilder.Append(String.Format("LaunchDateLocal: {0}\n", LaunchDateLocal));
+            }
+            stringBuilder.Append(String.Format("IsTentative: {0}\n", IsTentative));
+            if (CheckPropertyValue(TentativeMaxPrecision))
+            {
+                stringBuilder.Append(String.Format("TentativeMaxPrecision: {0}\n", TentativeMaxPrecision));
+            }
+            stringBuilder.Append(String.Format("Tbd: {0}\n", Tbd));
+            if (CheckPropertyValue(LaunchWindow))
+            {
+                stringBuilder.Append(String.Format("LaunchWindow: {0}\n", LaunchWindow));
+            }
+            if (CheckPropertyValue(Rocket))
+            {
+                stringBuilder.Append(String.Format("Rocket: \n{0}", Rocket));
+            }
+
+            if (CheckPropertyValue(Ships))
+            {
+                stringBuilder.Append(String.Format("Ships: {0}\n", FlightNumber));
+            }
+
+            if (CheckPropertyValue(Telemetry))
+            {
+                stringBuilder.Append(String.Format("Telemetry: \n{0}", Telemetry));
+            }
+
+            if (CheckPropertyValue(LaunchSite))
+            {
+                stringBuilder.Append(String.Format("LaunchSite: \n{0}", LaunchSite));
+            }
+
+            if (CheckPropertyValue(LaunchSuccess))
+            {
+                stringBuilder.Append(String.Format("LaunchSuccess: {0}\n", LaunchSuccess));
+            }
+
+            if (CheckPropertyValue(Links))
+            {
+                stringBuilder.Append(String.Format("Links: \n{0}", Links));
+            }
+
+            if (CheckPropertyValue(Details))
+            {
+                stringBuilder.Append(String.Format("Details: {0}\n", Details));
+            }
+
+            stringBuilder.Append(String.Format("Upcoming: {0}\n", Upcoming));
+
+            if (CheckPropertyValue(StaticFireDateUtc))
+            {
+                stringBuilder.Append(String.Format("StaticFireDateUtc: {0}\n", StaticFireDateUtc));
+            }
+
+            if (CheckPropertyValue(StaticFireDateUnix))
+            {
+                stringBuilder.Append(String.Format("StaticFireDateUnix: {0}\n", StaticFireDateUnix));
+            }
+
+            if (CheckPropertyValue(Crew))
+            {
+                stringBuilder.Append(String.Format("Crew: {0}\n", Crew));
+            }
+
+            if (CheckPropertyValue(LastDateUpdate))
+            {
+                stringBuilder.Append(String.Format("LastDateUpdate: {0}\n", LastDateUpdate));
+            }
+
+            if (CheckPropertyValue(LastLlLaunchDate))
+            {
+                stringBuilder.Append(String.Format("LastLlLaunchDate: {0}\n", LastLlLaunchDate));
+            }
+
+            if (CheckPropertyValue(LastLlUpdate))
+            {
+                stringBuilder.Append(String.Format("LastLlUpdate: {0}\n", LastLlUpdate));
+            }
+
+            if (CheckPropertyValue(LastWikiLaunchDate))
+            {
+                stringBuilder.Append(String.Format("LastLlLaunchDate: {0}\n", LastWikiLaunchDate));
+            }
+
+            if (CheckPropertyValue(LastWikiRevision))
+            {
+                stringBuilder.Append(String.Format("LastWikiRevision: {0}\n", LastWikiRevision));
+            }
+
+            if (CheckPropertyValue(LastWikiUpdate))
+            {
+                stringBuilder.Append(String.Format("LastWikiUpdate: {0}\n", LastWikiUpdate));
+            }
+
+            if (CheckPropertyValue(LaunchDateSource))
+            {
+                stringBuilder.Append(String.Format("LaunchDateSource: {0}\n", LaunchDateSource));
+            }
+            
+            return stringBuilder.ToString();
+        }
+
+
+        public bool CheckPropertyValue<T>(T element)
+        {
+
+            if (element != null)
+            {
+                return true;
+            }
+            return false;
+        }
 
     }
 }

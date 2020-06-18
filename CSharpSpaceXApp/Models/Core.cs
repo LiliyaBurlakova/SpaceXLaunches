@@ -1,5 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Text;
+
 
 namespace CSharpSpaceXApp.Models
 {
@@ -35,19 +37,73 @@ namespace CSharpSpaceXApp.Models
         [JsonProperty("landing_vehicle")]
         public string LandingVehicle { get; set; }
 
+
         public override string ToString()
         {
-            return String.Format("CoreSerial = {0}\n" +
-                "Flight = {1}\n" +
-                "Block = {2}\n" +
-                "Gridfins = {3}\n" +
-                "Legs = {4}\n" +
-                "Reused = {5}\n" +
-                "LandSuccess = {6}\n" +
-                "LandingIntent = {7}\n" +
-                "LandingType = {8}\n" +
-                "LandingVehicle = {9}", CoreSerial, Flight, Block, Gridfins, Legs, 
-                Reused, LandSuccess, LandingIntent, LandingType, LandingVehicle);
+            StringBuilder stringBuilder = new StringBuilder();
+
+            if (CheckPropertyValue(CoreSerial))
+            {
+                stringBuilder.Append(String.Format("     *CoreSerial = {0}\n", CoreSerial));
+            }
+
+            if (CheckPropertyValue(Flight))
+            {
+                stringBuilder.Append(String.Format("     *Flight = {0}\n", Flight));
+            }
+
+            if (CheckPropertyValue(Block))
+            {
+                stringBuilder.Append(String.Format("     *Block = {0}\n", Block));
+            }
+
+            if (CheckPropertyValue(Gridfins))
+            {
+                stringBuilder.Append(String.Format("     *Gridfins = {0}\n", Gridfins));
+            }
+
+            if (CheckPropertyValue(Legs))
+            {
+                stringBuilder.Append(String.Format("     *Legs = {0}\n", Legs));
+            }
+
+            if (CheckPropertyValue(Reused))
+            {
+                stringBuilder.Append(String.Format("     *Reused = {0}\n", Reused));
+            }
+
+            if (CheckPropertyValue(LandSuccess))
+            {
+                stringBuilder.Append(String.Format("     *LandSuccess = {0}\n", LandSuccess));
+            }
+
+            if (CheckPropertyValue(LandingIntent))
+            {
+                stringBuilder.Append(String.Format("     *LandingIntent = {0}\n", LandingIntent));
+            }
+
+            if (CheckPropertyValue(LandingType))
+            {
+                stringBuilder.Append(String.Format("     *LandingType = {0}\n", LandingType));
+            }
+
+            if (CheckPropertyValue(LandingVehicle))
+            {
+                stringBuilder.Append(String.Format("     *LandingVehicle = {0}\n", LandingVehicle));
+            }
+
+            return stringBuilder.ToString();
+        }
+
+
+        public bool CheckPropertyValue<T>(T element)
+        {
+
+            if (element != null)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

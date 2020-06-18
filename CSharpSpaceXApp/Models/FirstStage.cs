@@ -1,8 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.Text;
+
 
 namespace CSharpSpaceXApp.Models
 {
@@ -13,7 +12,25 @@ namespace CSharpSpaceXApp.Models
 
         public override string ToString()
         {
-            return String.Format("Cores = {0}", Cores);
+            StringBuilder stringBuilder = new StringBuilder();
+
+            if (CheckPropertyValue(Cores))
+            {
+                stringBuilder.Append(String.Format("    > Cores: \n{0}", Cores));
+            }
+
+            return stringBuilder.ToString();
+        }
+
+
+        public bool CheckPropertyValue<T>(T element)
+        {
+
+            if (element != null)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

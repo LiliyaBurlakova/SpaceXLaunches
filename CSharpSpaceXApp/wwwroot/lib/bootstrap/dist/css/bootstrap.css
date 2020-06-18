@@ -188,7 +188,6 @@ samp {
 pre {
   margin-top: 0;
   margin-bottom: 1rem;
-  overflow: auto;
 }
 
 figure {
@@ -6588,7 +6587,7 @@ button.bg-dark:focus {
 }
 
 .bg-white {
-  background-color: #fff !important;
+    background-color: #0F193B !important;
 }
 
 .bg-transparent {

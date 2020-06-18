@@ -1,8 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.Text;
 
 namespace CSharpSpaceXApp.Models
 {
@@ -17,11 +15,38 @@ namespace CSharpSpaceXApp.Models
         [JsonProperty("site_name_long")]
         public string SiteNameLong { get; set; }
 
+
         public override string ToString()
         {
-            return String.Format("SiteId = {0}\n" +
-                "SiteName = {1}\n" +
-                "SiteNameLong = {2}", SiteId, SiteName, SiteNameLong);
+            StringBuilder stringBuilder = new StringBuilder();
+
+            if (CheckPropertyValue(SiteId))
+            {
+                stringBuilder.Append(String.Format(" - SiteId = {0}\n", SiteId));
+            }
+
+            if (CheckPropertyValue(SiteName))
+            {
+                stringBuilder.Append(String.Format(" - SiteName = {0}\n", SiteName));
+            }
+
+            if (CheckPropertyValue(SiteNameLong))
+            {
+                stringBuilder.Append(String.Format(" - SiteNameLong = {0}\n", SiteNameLong));
+            }
+
+            return stringBuilder.ToString();
+        }
+
+
+        public bool CheckPropertyValue<T>(T element)
+        {
+
+            if (element != null)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

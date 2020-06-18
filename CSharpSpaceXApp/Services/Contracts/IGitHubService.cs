@@ -8,8 +8,8 @@ namespace CSharpSpaceXApp.Services.Contracts
 {
     public interface IGitHubService
     {
-        List<Launch> getUpcomingFlights(string url);
-        Launch getLatestLaunch(string url);
-        Launch getNextLaunch(string url);
+        List<Launch> GetUpcomingFlights(string url);
+        Launch GetLatestLaunch(string url);
+        Launch GetNextLaunch(string url);
     }
 }

@@ -109,6 +109,15 @@ C:\Projects\AE\CSharpSpaceXApp\CSharpSpaceXApp\obj\Debug\netcoreapp3.1\Razor\Vie
 C:\Projects\AE\CSharpSpaceXApp\CSharpSpaceXApp\obj\Debug\netcoreapp3.1\Razor\Views\Home\About.cshtml.g.cs
 C:\Projects\AE\CSharpSpaceXApp\CSharpSpaceXApp\obj\Debug\netcoreapp3.1\Razor\Views\NextLaunch\Next.cshtml.g.cs
 C:\Projects\AE\CSharpSpaceXApp\CSharpSpaceXApp\bin\Debug\netcoreapp3.1\JW.Pager.dll
+C:\Projects\AE\CSharpSpaceXApp\CSharpSpaceXApp\obj\Debug\netcoreapp3.1\Razor\Views\Error\APIError.cshtml.g.cs
+C:\Projects\AE\CSharpSpaceXApp\CSharpSpaceXApp\bin\Debug\netcoreapp3.1\Grpc.Core.dll
+C:\Projects\AE\CSharpSpaceXApp\CSharpSpaceXApp\bin\Debug\netcoreapp3.1\Grpc.Core.Api.dll
+C:\Projects\AE\CSharpSpaceXApp\CSharpSpaceXApp\bin\Debug\netcoreapp3.1\runtimes\linux\native\libgrpc_csharp_ext.x64.so
+C:\Projects\AE\CSharpSpaceXApp\CSharpSpaceXApp\bin\Debug\netcoreapp3.1\runtimes\linux\native\libgrpc_csharp_ext.x86.so
+C:\Projects\AE\CSharpSpaceXApp\CSharpSpaceXApp\bin\Debug\netcoreapp3.1\runtimes\osx\native\libgrpc_csharp_ext.x64.dylib
+C:\Projects\AE\CSharpSpaceXApp\CSharpSpaceXApp\bin\Debug\netcoreapp3.1\runtimes\osx\native\libgrpc_csharp_ext.x86.dylib
+C:\Projects\AE\CSharpSpaceXApp\CSharpSpaceXApp\bin\Debug\netcoreapp3.1\runtimes\win\native\grpc_csharp_ext.x64.dll
+C:\Projects\AE\CSharpSpaceXApp\CSharpSpaceXApp\bin\Debug\netcoreapp3.1\runtimes\win\native\grpc_csharp_ext.x86.dll
 C:\Projects\AE\CSharpSpaceXApp\CSharpSpaceXApp\obj\Debug\netcoreapp3.1\CSharpSpaceXApp.csproj.CoreCompileInputs.cache
 C:\Projects\AE\CSharpSpaceXApp\CSharpSpaceXApp\obj\Debug\netcoreapp3.1\CSharpSpaceXApp.MvcApplicationPartsAssemblyInfo.cs
 C:\Projects\AE\CSharpSpaceXApp\CSharpSpaceXApp\obj\Debug\netcoreapp3.1\CSharpSpaceXApp.MvcApplicationPartsAssemblyInfo.cache

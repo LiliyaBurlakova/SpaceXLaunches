@@ -1,37 +1,25 @@
-﻿
+﻿@model SheduedFlight
+
+
 @{
     ViewBag.Title = "Upcoming Launches";
-    var pagedList = (IPagedList)ViewBag.OnePageOfProducts;
     Layout = "~/Views/Shared/_Layout.cshtml";
 
 }
-@using X.PagedList.Mvc.Core; //import this so we get our HTML Helper
-@using X.PagedList;
-
-    <link href="/Content/PagedList.css" rel="stylesheet" type="text/css" />
-
-<h2>Upcomming SpaceX launch plan</h2>
-        </br>
-        </br>
-        </br>
+<h2>Upcomming SpaceX launch plans</h2>
+<br>
+<br>
+<br>
 
 <body>
-    <div class="spacex-image">
-        <img src="https://image.cnbcfm.com/api/v1/image/106403011-1582297335044spacexcrs17launch.jpg?v=1582297630&w=678&h=381" width="500" height="250">
+    <div class="space-img">
+        <img src="https://i.pinimg.com/originals/05/86/00/058600c7547504c3b05ce46ef6fb901d.jpg" width="350" height="500" />
     </div>
-    @foreach (var item in ViewBag.OnePageOfProducts)
-    {
-        <div class="custom-text">
-            <p>Flight number: @item.FlightNumber</p>
-            <p>@item.MissionName</p>
-            <p>@item.MissionId</p>
-            <p>@item.LaunchYear</p>
-            <p>@item.LaunchDateUnix</p>
-            <p>@item.LaunchDateUtc</p>
-            <p>@item.LaunchDateLocal</p>
-            <hr />
-        </div>
-    }
+
+    <pre>@Model.shefuedLaunch.ToString()</pre>
+
+    <hr />
+
 
     @using (Html.BeginForm("ExportUpcoming", "File", FormMethod.Post))
     {
@@ -48,16 +36,30 @@
         });
     </script>
 
-    <div id="container" style="margin-left: 20px">
-        <p></p>
-        <p></p>
-        <div class="pagination" style="margin-left: 400px">
+    <br />
+    <br />
 
-            @Html.PagedListPager(pagedList, page => Url.Action("Upcoming", new { page }))
-        </div>
+    <div class="pagination">
+        @if (Model.PrevPage == null)
+        {
+            <a class="btn btn-sm btn-lighter btn-auto disabled">Prev</a>
+        }
+        else
+        {
+            <a asp-action="Upcoming" asp-route-currPage="@Model.PrevPage" class="btn btn-sm btn-lighter btn-auto" value="@Model.PrevPage">Prev</a>
+        }
+
+        <a class="btn btn-sm btn-primary btn-auto" value="@Model.CurrPage">@Model.CurrPage</a>
+
+        @if (Model.NextPage == null)
+        {
+            <a class="btn btn-sm btn-lighter btn-auto disabled">Next</a>
+        }
+        else
+        {
+            <a asp-controller="UpcomingLaunches" asp-action="Upcoming" asp-route-currPage="@Model.NextPage" class="btn btn-sm btn-lighter btn-auto" value="@Model.NextPage">Next</a>
+        }
     </div>
-
-
 
 </body>
 
@@ -65,12 +67,25 @@
     .custom-text {
         font-family: Candara;
         font-size: large;
-        text-align: justify;
-        text-justify: inter-word;
+        overflow-x: hidden;
     }
 
     .spacex-image {
         float: right
+    }
+
+    pre {
+        word-wrap: break-word; 
+        white-space: pre-wrap; 
+        text-align: justify
+    }
+
+    .pagination{
+        margin-left: 450px;
+    }
+    .space-img {
+        float: right;
+        margin: 10px;
     }
 </style>
 

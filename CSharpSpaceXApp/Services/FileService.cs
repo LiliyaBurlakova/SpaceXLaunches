@@ -1,18 +1,29 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using System.Reflection;
-using System.Text;
 using CSharpSpaceXApp.Models;
 using CSharpSpaceXApp.Services.Contracts;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
+using iTextSharp.text.pdf.draw;
 using iTextSharp.tool.xml;
 
 namespace CSharpSpaceXApp.Services
 {
-    public class FileService : IFileService
+    /// <summary>
+    /// Creates a pdf file and writes information in the file
+    /// </summary>
+    public class FileService : ISpaceXApiService
     {
+        public FileService()
+        {
+        }
 
+        /// <summary>
+        /// Creates PDF file
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <param name="title">Title of the file</param>
+        /// <returns>A new pdf document</returns>
         public Document CreatePDF(MemoryStream stream, string title)
         {
             StringReader sr = new StringReader("");
@@ -27,37 +38,20 @@ namespace CSharpSpaceXApp.Services
             return pdfDoc;
         }
 
-        public string GetStringOfObject(Launch flight)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="pdfDoc">The created pdf</param>
+        /// <param name="upcomingLaunches">List with the launches, that have to be added in the pdf</param>
+        public void AddLaunchesToPdf(Document pdfDoc, List<Launch> upcomingLaunches)
         {
-            StringBuilder stringToPrint = new StringBuilder();
-
-            foreach (PropertyInfo propertyInfo in flight.GetType().GetProperties())
+            foreach (Launch launch in upcomingLaunches)
             {
-                if (CheckIfNullOrEmpty(propertyInfo, stringToPrint))
-                {
-                    AddInfoInPDF(flight, stringToPrint, propertyInfo);
-                }
-
+                pdfDoc.Add(new Paragraph(launch.ToString()));
+                pdfDoc.Add(new Paragraph("\n"));
+                DottedLineSeparator dottedline = new DottedLineSeparator();
+                pdfDoc.Add(dottedline);
             }
-            return stringToPrint.ToString();
-        }
-
-        public void AddInfoInPDF(Launch flight, StringBuilder stringToPrint, PropertyInfo propertyInfo)
-        {
-            string propertyName = propertyInfo.Name;
-            stringToPrint.Append(propertyName);
-            stringToPrint.Append(": ");
-            stringToPrint.Append(propertyInfo.GetValue(flight));
-            stringToPrint.Append("\n");
-        }
-
-        public bool CheckIfNullOrEmpty<T>(T element, StringBuilder stringBuilder)
-        {
-            if (element != null && !element.Equals(""))
-            {
-                return true;
-            }
-            return false;
         }
 
     }

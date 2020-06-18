@@ -1,8 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.Text;
 
 namespace CSharpSpaceXApp.Models
 {
@@ -44,22 +42,94 @@ namespace CSharpSpaceXApp.Models
         [JsonProperty("flickr_images")]
         public object[] FlickrImages { get; set; }
 
+
         public override string ToString()
         {
-            return String.Format("MissionPatch = {0}\n" +
-                "MissionPatchSmall = {1}\n" +
-                "RedditCampaign = {2}\n" +
-                "RedditLaunch = {3}\n" +
-                "RedditRecovery = {4}\n" +
-                "RedditMedia = {5}\n" +
-                "Presskit = {6}\n" +
-                "ArticleLink = {7}\n" +
-                "Wikipedia = {8}\n" +
-                "VideoLink = {9}\n" +
-                "YoutubeId = {10}\n" +
-                "FlickrImages = {11}", 
-                MissionPatch, MissionPatchSmall, RedditCampaign, RedditLaunch, RedditRecovery, RedditMedia, 
-                Presskit, ArticleLink, Wikipedia, VideoLink, YoutubeId, FlickrImages);
+            StringBuilder stringBuilder = new StringBuilder();
+
+            if (CheckPropertyValue(MissionPatch))
+            {
+                stringBuilder.Append(String.Format("  - MissionPatch = {0}\n", MissionPatch));
+            }
+
+            if (CheckPropertyValue(MissionPatchSmall))
+            {
+                stringBuilder.Append(String.Format("  - MissionPatchSmall = {0}\n", MissionPatchSmall));
+            }
+
+            if (CheckPropertyValue(RedditCampaign))
+            {
+                stringBuilder.Append(String.Format("  - RedditCampaign = {0}\n", RedditCampaign));
+            }
+
+            if (CheckPropertyValue(RedditLaunch))
+            {
+                stringBuilder.Append(String.Format("  - RedditLaunch = {0}\n", RedditLaunch));
+            }
+
+            if (CheckPropertyValue(RedditRecovery))
+            {
+                stringBuilder.Append(String.Format("  - RedditRecovery = {0}\n", RedditRecovery));
+            }
+
+            if (CheckPropertyValue(RedditMedia))
+            {
+                stringBuilder.Append(String.Format("  - RedditMedia = {0}\n", RedditMedia));
+            }
+
+            if (CheckPropertyValue(Presskit))
+            {
+                stringBuilder.Append(String.Format("  - Presskit = {0}\n", Presskit));
+            }
+
+            if (CheckPropertyValue(ArticleLink))
+            {
+                stringBuilder.Append(String.Format("  - ArticleLink = {0}\n", ArticleLink));
+            }
+
+            if (CheckPropertyValue(Wikipedia))
+            {
+                stringBuilder.Append(String.Format("  - Wikipedia = {0}\n", Wikipedia));
+            }
+
+            if (CheckPropertyValue(VideoLink))
+            {
+                stringBuilder.Append(String.Format("  - VideoLink = {0}\n", VideoLink));
+            }
+
+            if (CheckPropertyValue(YoutubeId))
+            {
+                stringBuilder.Append(String.Format("  - YoutubeId = {0}\n", YoutubeId));
+            }
+
+            if (CheckPropertyValue(FlickrImages))
+            {
+                if (FlickrImages.Length != 0)
+                {
+                    stringBuilder.Append(String.Format("  - FlickrImages = \n"));
+                    foreach (string img in FlickrImages)
+                    {
+                        stringBuilder.Append(String.Format("{0}\n", img));
+                    }
+                }
+                else
+                {
+                    stringBuilder.Append(String.Format("  - FlickrImages = not provided\n"));
+                }
+            }
+
+            return stringBuilder.ToString();
+        }
+
+
+        public bool CheckPropertyValue<T>(T element)
+        {
+
+            if (element != null)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

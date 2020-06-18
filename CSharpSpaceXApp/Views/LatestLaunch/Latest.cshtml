@@ -8,22 +8,15 @@
 }
 
 <h2>Latest SpaceX launch plan</h2>
-        </br>
-        </br>
-        </br>
+        <br>
 
 <body>
-    <div class="custom-text">
-        <p>Flight number: @Model.FlightNumber</p>
-        <p>@Model.MissionName</p>
-        <p>@Model.MissionId</p>
-        <p>@Model.LaunchYear</p>
-        <p>@Model.LaunchDateUnix</p>
-        <p>@Model.LaunchDateUtc</p>
-        <p>@Model.LaunchDateLocal</p>
-        <hr />
+    <div class="space-img">
+        <img src="https://i.pinimg.com/originals/05/86/00/058600c7547504c3b05ce46ef6fb901d.jpg" width="350" height="500" />
     </div>
-    <p><button class="btn btn-default" runat="server" OnClick="Button1_Click" Text="Download"></button></p>
+    <pre>@Model.ToString()</pre>
+
+    <hr />
 
     @using (Html.BeginForm("ExportLatestLaunch", "File", FormMethod.Post))
     {
@@ -46,6 +39,14 @@
         font-size: large;
         text-align: justify;
         text-justify: inter-word;
+    }
+    pre {
+        word-wrap: break-word;
+        white-space: pre-wrap;
+        text-align: justify
+    }
+    .space-img {
+        float:right;
     }
 </style>
 

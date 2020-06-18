@@ -1,7 +1,11 @@
-﻿using CSharpSpaceXApp.Models;
+﻿using CSharpSpaceXApp.Exceptions;
+using CSharpSpaceXApp.Models;
 using CSharpSpaceXApp.Services.Contracts;
 using Microsoft.AspNetCore.Mvc;
 
+/// <summary>
+/// Takes information from the SpaceX API about latest launch and provides it to the view
+/// </summary>
 
 namespace CSharpSpaceXApp.Controllers
 {
@@ -16,9 +20,18 @@ namespace CSharpSpaceXApp.Controllers
         }
         public IActionResult Latest()
         {
-            Launch latestFlight = gitHubService.getLatestLaunch(Constants.Constants.LATEST_LAUNCHES);
+            try
+            {
+                Launch latestLaunch = gitHubService.GetLatestLaunch(Constants.Constants.LATEST_LAUNCHES);
 
-            return View(latestFlight);
+                return View(latestLaunch);
+            }
+            catch (APIConnectionException e)
+            {
+                ViewBag.Message = e.Message;
+                return Redirect("APIError");
+
+            }
         }
     }
 }

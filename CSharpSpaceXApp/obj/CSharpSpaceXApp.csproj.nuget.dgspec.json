@@ -38,9 +38,21 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "Grpc.Core": {
+              "target": "Package",
+              "version": "[2.29.0, )"
+            },
             "JW.Pager": {
               "target": "Package",
               "version": "[1.0.1, )"
+            },
+            "KendoUICore": {
+              "target": "Package",
+              "version": "[2020.2.513, )"
+            },
+            "KendoUIWeb": {
+              "target": "Package",
+              "version": "[2014.1.318, )"
             },
             "Microsoft.AspNet.Mvc": {
               "target": "Package",

@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using CSharpSpaceXApp.Exceptions;
 using CSharpSpaceXApp.Models;
 using CSharpSpaceXApp.Services.Contracts;
 using Microsoft.AspNetCore.Mvc;
 
+/// <summary>
+/// Takes information from the SpaceX API about next launch and provides it to the view
+/// </summary>
 namespace CSharpSpaceXApp.Controllers
 {
     public class NextLaunchController : Controller
@@ -18,9 +18,17 @@ namespace CSharpSpaceXApp.Controllers
         }
         public IActionResult Next()
         {
-            Launch latestFlight = gitHubService.getNextLaunch(Constants.Constants.NEXT_LAUNCHES);
+            try
+            {
+                Launch nextLaunch = gitHubService.GetNextLaunch(Constants.Constants.NEXT_LAUNCHES);
+                return View(nextLaunch);
+            }
+            catch (APIConnectionException e)
+            {
+                ViewBag.Message = e.Message;
+                return Redirect("APIError");
 
-            return View(latestFlight);
+            }
         }
     
     }

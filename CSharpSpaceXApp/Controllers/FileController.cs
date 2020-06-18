@@ -3,22 +3,25 @@ using System.IO;
 using CSharpSpaceXApp.Models;
 using CSharpSpaceXApp.Services.Contracts;
 using iTextSharp.text;
-using iTextSharp.text.pdf.draw;
 using Microsoft.AspNetCore.Mvc;
 
+/// <summary>
+/// FileController takes the API information about launches and exports it to a downloadable PDF file.
+/// </summary>
 
 namespace CSharpSpaceXApp.Controllers
 {
     public class FileController : Controller
     {
-        private IFileService fileService;
+        private ISpaceXApiService fileService;
         private IGitHubService gitHubService;
 
-        public FileController(IFileService fileService, IGitHubService gitHubService)
+        public FileController(ISpaceXApiService fileService, IGitHubService gitHubService)
         {
             this.fileService = fileService;
             this.gitHubService = gitHubService;
         }
+
 
         [HttpPost]
         
@@ -29,16 +32,9 @@ namespace CSharpSpaceXApp.Controllers
                 string title = "Upcoming launches SpaceX";
                 Document pdfDoc = fileService.CreatePDF(stream, title);
 
-                List<Launch> upcomingFlights = gitHubService.getUpcomingFlights(Constants.Constants.UPCOMING_LAUNCHES);
+                List<Launch> upcomingLaunches = gitHubService.GetUpcomingFlights(Constants.Constants.UPCOMING_LAUNCHES);
 
-                foreach (Launch flight in upcomingFlights)
-                {
-                    string textToAdd = fileService.GetStringOfObject(flight);
-                    pdfDoc.Add(new Paragraph(textToAdd));
-                    pdfDoc.Add(new Paragraph("\n"));
-                    DottedLineSeparator dottedline = new DottedLineSeparator();
-                    pdfDoc.Add(dottedline);
-                }
+                fileService.AddLaunchesToPdf(pdfDoc, upcomingLaunches);
 
                 pdfDoc.Close();
                 return File(stream.ToArray(), "application/pdf", "Upcoming.pdf");
@@ -49,15 +45,14 @@ namespace CSharpSpaceXApp.Controllers
         
         public FileResult ExportLatestLaunch()
         {
-            using (MemoryStream stream = new System.IO.MemoryStream())
+            using (MemoryStream stream = new MemoryStream())
 
             {
                 string title = "Latest launch SpaceX";
                 Document pdfDoc = fileService.CreatePDF(stream, title);
 
-                Launch latestLaunch = gitHubService.getLatestLaunch(Constants.Constants.LATEST_LAUNCHES);
+                Launch latestLaunch = gitHubService.GetLatestLaunch(Constants.Constants.LATEST_LAUNCHES);
 
-                string textToAdd = fileService.GetStringOfObject(latestLaunch);
                 pdfDoc.Add(new Paragraph(latestLaunch.ToString()));
                 pdfDoc.Close();
                 return File(stream.ToArray(), "application/pdf", "LatestLaunch.pdf");
@@ -74,11 +69,9 @@ namespace CSharpSpaceXApp.Controllers
                 string title = "Next launch SpaceX";
                 Document pdfDoc = fileService.CreatePDF(stream, title);
 
-                Launch nextLaunch = gitHubService.getLatestLaunch(Constants.Constants.NEXT_LAUNCHES);
+                Launch nextLaunch = gitHubService.GetLatestLaunch(Constants.Constants.NEXT_LAUNCHES);
 
-
-                string textToAdd = fileService.GetStringOfObject(nextLaunch);
-                pdfDoc.Add(new Paragraph(textToAdd));
+                pdfDoc.Add(new Paragraph(nextLaunch.ToString()));
                 pdfDoc.Close();
                 return File(stream.ToArray(), "application/pdf", "NextLaunch.pdf");
             }

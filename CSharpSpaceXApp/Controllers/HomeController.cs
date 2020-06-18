@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using CSharpSpaceXApp.Models;
@@ -16,15 +14,30 @@ namespace CSharpSpaceXApp.Controllers
             _logger = logger;
         }
 
+        /// <summary>
+        /// HomePage
+        /// </summary>
+        /// <returns>View to the Home page</returns>
+
         public IActionResult Index()
         {
             return View();
         }
 
+        /// <summary>
+        /// Privacy Page
+        /// </summary>
+        /// <returns>View to the privacy page</returns>
+
         public IActionResult Privacy()
         {
             return View();
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>View to the about page</returns>
 
         public ActionResult About()
         {
@@ -37,6 +50,8 @@ namespace CSharpSpaceXApp.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+       
 
     }
 }
